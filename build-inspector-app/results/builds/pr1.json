@@ -1,0 +1,103 @@
+{
+  "kafka-2.4-jdk8": [
+    {
+      "result": "ABORTED",
+      "event": "STARTED BY AN SCM CHANGE",
+      "name": "Kafka » kafka-2.4-jdk8 #26",
+      "id": 26,
+      "duration": 39630270,
+      "timestamp": "2021-02-10T12:00:09.806",
+      "commitId": "2cdac40d33d24496b9ff02808491c2ae867a6461",
+      "branch": "refs/remotes/origin/2.4",
+      "parentName": "kafka-2.4-jdk8"
+    },
+    {
+      "result": "ABORTED",
+      "event": "STARTED BY AN SCM CHANGE",
+      "name": "Kafka » kafka-2.4-jdk8 #25",
+      "id": 25,
+      "duration": 39625793,
+      "timestamp": "2021-02-09T20:00:09.445",
+      "commitId": "df9ea66a269bf1bb3cb47e2cc1fe4c532e71fcaa",
+      "branch": "refs/remotes/origin/2.4",
+      "parentName": "kafka-2.4-jdk8"
+    },
+    {
+      "result": "FAILURE",
+      "event": "STARTED BY AN SCM CHANGE",
+      "name": "Kafka » kafka-2.4-jdk8 #24",
+      "id": 24,
+      "duration": 14516635,
+      "timestamp": "2021-02-08T04:00:07.973",
+      "commitId": "fe93adcb34b0098855f73097d14c4c80afb3d3de",
+      "branch": "refs/remotes/origin/2.4",
+      "parentName": "kafka-2.4-jdk8"
+    },
+    {
+      "result": "FAILURE",
+      "event": "STARTED BY AN SCM CHANGE",
+      "name": "Kafka » kafka-2.4-jdk8 #23",
+      "id": 23,
+      "duration": 13772971,
+      "timestamp": "2021-02-04T04:02:31.377",
+      "commitId": "bd0bf742450166f556d8b69ac648e2a5a27a55a7",
+      "branch": "refs/remotes/origin/2.4",
+      "parentName": "kafka-2.4-jdk8"
+    },
+    {
+      "result": "FAILURE",
+      "event": "STARTED BY AN SCM CHANGE",
+      "name": "Kafka » kafka-2.4-jdk8 #22",
+      "id": 22,
+      "duration": 10941104,
+      "timestamp": "2021-02-04T01:00:09.397",
+      "commitId": "f2f157ff0fd7d8ae54e9bfe6c3837ceb305ef973",
+      "branch": "refs/remotes/origin/2.4",
+      "parentName": "kafka-2.4-jdk8"
+    },
+    {
+      "result": "ABORTED",
+      "event": "STARTED BY AN SCM CHANGE",
+      "name": "Kafka » kafka-2.4-jdk8 #21",
+      "id": 21,
+      "duration": 39627996,
+      "timestamp": "2021-01-26T23:00:10.229",
+      "commitId": "05eca98fc10eae5ece0b1d3dca6bae195debd768",
+      "branch": "refs/remotes/origin/2.4",
+      "parentName": "kafka-2.4-jdk8"
+    },
+    {
+      "result": "ABORTED",
+      "event": "STARTED BY AN SCM CHANGE",
+      "name": "Kafka » kafka-2.4-jdk8 #20",
+      "id": 20,
+      "duration": 39619767,
+      "timestamp": "2021-01-23T07:00:08.761",
+      "commitId": "0f9279b240908d2981f012a2ea57b569fa184045",
+      "branch": "refs/remotes/origin/2.4",
+      "parentName": "kafka-2.4-jdk8"
+    },
+    {
+      "result": "FAILURE",
+      "event": "STARTED BY AN SCM CHANGE",
+      "name": "Kafka » kafka-2.4-jdk8 #19",
+      "id": 19,
+      "duration": 26457427,
+      "timestamp": "2021-01-12T09:00:10.573",
+      "commitId": "a98295942da46616676c7776cf9e24cb21b77c80",
+      "branch": "refs/remotes/origin/2.4",
+      "parentName": "kafka-2.4-jdk8"
+    },
+    {
+      "result": "SUCCESS",
+      "event": "STARTED BY AN SCM CHANGE",
+      "name": "Kafka » kafka-2.4-jdk8 #18",
+      "id": 18,
+      "duration": 39223480,
+      "timestamp": "2020-11-21T20:00:08.611",
+      "commitId": "cb60abc1df281b16eb359be0e6df925932e33418",
+      "branch": "refs/remotes/origin/2.4",
+      "parentName": "kafka-2.4-jdk8"
+    }
+  ]
+}
