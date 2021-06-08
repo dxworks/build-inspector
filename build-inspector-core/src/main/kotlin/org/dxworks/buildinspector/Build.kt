@@ -2,7 +2,7 @@ package org.dxworks.buildinspector
 
 class Build(
     var name: String?,
-    var id: Int,
+    var id: Number,
     var duration: Int?,
     var timestamp: String?,
     result: String?,

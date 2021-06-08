@@ -2,11 +2,8 @@ package org.dxworks.buildinspector
 
 import org.dxworks.githubminer.service.repository.actions.run.GithubRunService
 import org.dxworks.jenkinsminer.JenkinsService
-import java.io.FileInputStream
-import java.nio.file.Paths
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.*
 
 
 class Service {

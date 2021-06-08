@@ -1,11 +1,11 @@
 github:
   repos:
-    # gugu: cadeca/weasylearn-be
-    zuzu: apache/kafka
+    weasylearn: cadeca/weasylearn-be
+#    zuzu: apache/kafka
   tokens:
-    - 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
+    - ghp_example_token
 
 
 jenkins:
-  pr1: https://builds.apache.org/job/Kafka/job/kafka-2.4-jdk8/
+  kafka-pr: https://builds.apache.org/job/Kafka/job/kafka-2.4-jdk8/
   # pr2: https://ci-builds.apache.org/job/Kafka/job/kafka-2.3-jdk8/

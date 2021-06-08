@@ -9,47 +9,47 @@ import org.dxworks.buildinspector.statistics.BranchDistributionStatistic
 import org.dxworks.buildinspector.statistics.BuildsPassedStatistic
 import java.io.File
 
-class Main {
-    private val yamlMapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
-    private val service = Service()
-    private val config: ConfigurationDTO = yamlMapper.readValue(File( "D:/--WORK-- Facultate/build-inspector/build-inspector-app/config/config.yml"), ConfigurationDTO::class.java)
+private val yamlMapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
+private val service = Service()
+private val config: ConfigurationDTO = yamlMapper.readValue(File("config/config.yml"), ConfigurationDTO::class.java)
 
-    fun extract(){
-        config.jenkins?.forEach{ (file_name, url) ->
-            if (url != null) {
-                val start = System.currentTimeMillis()
-                ResultsFile().writeToFile(service.getJenkinsResults(url), file_name)
-                println(file_name + " extraction time: " + (System.currentTimeMillis() - start).toString())
-            }
-        }
-
-        if(config.github?.tokens?.isNotEmpty() == true) {
-            val tokens = config.github.tokens
-            config.github.repos?.forEach { (file_name, project_name) ->
-                if (project_name != null) {
-                    val owner = project_name.substringBefore("/")
-                    val repo = project_name.substringAfter("/")
-                    val start = System.currentTimeMillis()
-                    ResultsFile().writeToFile(service.getGithubResults(owner, repo, tokens), file_name)
-                    println(project_name + " extraction time: " + (System.currentTimeMillis() - start).toString())
-                }
-            }
+fun extract() {
+    config.jenkins?.forEach { (file_name, url) ->
+        if (url != null) {
+            val start = System.currentTimeMillis()
+            ResultsFile().writeToFile(service.getJenkinsResults(url), file_name)
+            println(file_name + " extraction time: " + (System.currentTimeMillis() - start).toString())
         }
     }
-    fun analyze(){
-        extract()
-        BuildsPassedStatistic().analyze()
-        AverageDurationStatistic().analyze()
-        BranchDistributionStatistic().analyze()
+
+    if (config.github?.tokens?.isNotEmpty() == true) {
+        val tokens = config.github.tokens
+        config.github.repos?.forEach { (file_name, project_name) ->
+            if (project_name != null) {
+                val owner = project_name.substringBefore("/")
+                val repo = project_name.substringAfter("/")
+                val start = System.currentTimeMillis()
+                ResultsFile().writeToFile(service.getGithubResults(owner, repo, tokens), file_name)
+                println(project_name + " extraction time: " + (System.currentTimeMillis() - start).toString())
+            }
+        }
     }
 }
 
-fun main(args: Array<String>){
+fun analyze() {
+    extract()
+    BuildsPassedStatistic().analyze()
+    AverageDurationStatistic().analyze()
+    BranchDistributionStatistic().analyze()
+}
+
+fun main(args: Array<String>) {
     if (args.isNotEmpty()) {
         when {
-            args[0] == "" -> println("Please write what operation you would like to perform.")
-            args[0] == "extract" -> Main().extract()
-            args[0] == "analyze" -> Main().analyze()
+            args[0] == "extract" -> extract()
+            args[0] == "analyze" -> analyze()
         }
+    } else {
+        println("Please write what operation you would like to perform.")
     }
 }

@@ -13,7 +13,7 @@ class BuildsPassedStatistic {
     }
 
     private fun writeToFile (statistic: List<Pair<String, Double>>, file_name : String){
-        val fileName = "D:/--WORK-- Facultate/build-inspector/build-inspector-app/results/statistics/" + file_name + "_succesfullBuilds.txt"
+        val fileName = "results/statistics/${file_name}_successfulBuilds.txt"
         if(File(fileName).createNewFile())
             File(fileName).outputStream().write(statistic.toString().toByteArray())
         else
@@ -21,10 +21,12 @@ class BuildsPassedStatistic {
     }
 
     fun analyze() {
-        File("D:/--WORK-- Facultate/build-inspector/build-inspector-app/results/builds/").walk().forEach { file ->
+        File("./results/builds/").walk()
+            .filter { it.isFile }
+            .forEach { file ->
             file.inputStream().bufferedReader().use {
                 val readMap = it.readLines() as Map<String,List<Build>>
-                getSucceededBuildsPercentage(readMap, file.getName())
+                getSucceededBuildsPercentage(readMap, file.name)
             }
         }
     }
