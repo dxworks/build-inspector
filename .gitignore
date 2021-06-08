@@ -1,3 +1,4 @@
 # Project exclude paths
 /build-inspector-app/target/
 /build-inspector-core/target/
+/build-inspector-app/results/

@@ -7,11 +7,15 @@ import org.dxworks.buildinspector.configuration.ConfigurationDTO
 import org.dxworks.buildinspector.statistics.AverageDurationStatistic
 import org.dxworks.buildinspector.statistics.BranchDistributionStatistic
 import org.dxworks.buildinspector.statistics.BuildsPassedStatistic
+import org.dxworks.buildinspector.statistics.DistributionOnDaysStatistic
 import java.io.File
 
 private val yamlMapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
 private val service = Service()
-private val config: ConfigurationDTO = yamlMapper.readValue(File("config/config.yml"), ConfigurationDTO::class.java)
+private val config: ConfigurationDTO = yamlMapper.readValue(
+    File("config/config.yml"),
+    ConfigurationDTO::class.java
+)
 
 fun extract() {
     config.jenkins?.forEach { (file_name, url) ->
@@ -41,7 +45,9 @@ fun analyze() {
     BuildsPassedStatistic().analyze()
     AverageDurationStatistic().analyze()
     BranchDistributionStatistic().analyze()
+    DistributionOnDaysStatistic().analyze()
 }
+
 
 fun main(args: Array<String>) {
     if (args.isNotEmpty()) {

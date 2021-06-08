@@ -1,11 +1,29 @@
+# The are two keys for each type of server supported by this project.
+# Each contains specific needs for configuration.
+# It is not mandatory to configure both types.
+# All of the information extracted will be saved in the results/builds directory with specific names.
+# All of the statistics will be analyzing the projects configured and the the results will be stored in the results/statistics directory with proper names.
+
+# A map with different Github specific components.
 github:
+
+  # A map of specific github projects where the key will represent the name of the result file for that project.
+  # The values of the map represent a String formed from two parts delimited by the / character: owner/repo.
+  # The first part represents the owner and the last one stands for the name of the specific repository.
   repos:
-    weasylearn: cadeca/weasylearn-be
-#    zuzu: apache/kafka
+  #insgit: dxworks/inspector-git
+
+  # A list of Personal Access Tokens, used for authentication.
+  # If the server you are connected to has Rate Limits activated,
+  # Github Miner will perform faster if multiple tokens (from different users) are provided.
+  # This list is *required if the client want to use a Github project.
   tokens:
-    - ghp_example_token
+    #- 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
 
 
+# A map of urls to project on Jenkins.
+# The key represents the name of the result file for that project and the value is the url of project.
 jenkins:
-  kafka-pr: https://builds.apache.org/job/Kafka/job/kafka-2.4-jdk8/
-  # pr2: https://ci-builds.apache.org/job/Kafka/job/kafka-2.3-jdk8/
+    #kafka: https://builds.apache.org/job/Kafka/
+    accumulo: https://ci-builds.apache.org/job/Accumulo/
+
