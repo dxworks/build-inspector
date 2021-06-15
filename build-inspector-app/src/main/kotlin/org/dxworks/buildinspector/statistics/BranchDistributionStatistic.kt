@@ -1,27 +1,24 @@
 package org.dxworks.buildinspector.statistics
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.kotlin.readValue
-import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import org.dxworks.buildinspector.Build
-import java.io.File
 import java.io.FileWriter
 import java.io.IOException
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 class BranchDistributionStatistic : Statistic() {
 
-    private val CSV_HEADER = "branch,usage_percentage"
+    private val CSV_HEADER = "branch,fail,success"
     override fun getAnalysis(buildsMap: Map<String,List<Build>>, file_name : String){
         writeToFile(
             buildsMap.map{ it.value }.flatten()
                 .groupBy{ it.branch ?: "defaultbranch"}
-                .mapValues { it.value.count() }
+                .mapValues { Pair(it.value.count{it.result != "SUCCESS"}, it.value.count{it.result == "SUCCESS"})}
+                .map { (key, value) ->
+                    BranchDistributionDTO(key, value.first, value.second)
+                }
             , file_name)
     }
 
-    private fun writeToFile (statistic: Map<String, Int>, file_name: String){
+    private fun writeToFile (statistic: List<BranchDistributionDTO>, file_name: String){
         val fileName = "./results/statistics/" + file_name.removeSuffix(".json") + "_branchDistribution.csv"
         var fileWriter: FileWriter? = null
         try {
@@ -29,9 +26,11 @@ class BranchDistributionStatistic : Statistic() {
             fileWriter.append(CSV_HEADER)
             fileWriter.append('\n')
             statistic.forEach {
-                fileWriter.append(it.key)
+                fileWriter.append(it.branch_name)
                 fileWriter.append(',')
-                fileWriter.append(it.value.toString())
+                fileWriter.append(it.fail.toString())
+                fileWriter.append(',')
+                fileWriter.append(it.success.toString())
                 fileWriter.append('\n')
             }
         } catch (e: Exception) {
